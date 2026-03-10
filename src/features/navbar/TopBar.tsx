@@ -22,9 +22,9 @@ export const TopBar = () => {
 
                 <div className="flex items-center gap-4">
                     {SOCIAL_LINKS.map((social) => (
-                        <a 
-                            key={social.name} 
-                            href={social.href} 
+                        <a
+                            key={social.name}
+                            href={social.href}
                             className="hover:text-white/80 transition-colors"
                             aria-label={social.name}
                         >
