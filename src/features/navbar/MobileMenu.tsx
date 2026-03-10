@@ -27,7 +27,11 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b">
                     <img src={logo} alt="Kini Osteo Sahaty" className="h-8 w-auto" />
-                    <button onClick={onClose} className="text-gray-500 hover:text-brand transition-colors">
+                    <button 
+                        onClick={onClose} 
+                        className="text-gray-500 hover:text-brand transition-colors"
+                        aria-label="Fermer le menu"
+                    >
                         <Icons.X size={Icons.SIZES.lg} strokeWidth={Icons.CONFIG.strokeWidth} />
                     </button>
                 </div>

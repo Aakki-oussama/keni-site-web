@@ -41,6 +41,7 @@ export const Navbar = () => {
                     <button
                         onClick={() => setIsOpen(true)}
                         className="md:hidden text-gray-700 hover:text-brand transition-colors p-2"
+                        aria-label="Ouvrir le menu"
                     >
                         <Icons.Menu size={Icons.SIZES.xl} strokeWidth={Icons.CONFIG.strokeWidth} />
                     </button>
