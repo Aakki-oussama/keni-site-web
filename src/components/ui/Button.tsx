@@ -53,7 +53,7 @@ export const Button = (props: ButtonProps) => {
     )
   }
 
-  const { href: _, ref, ...buttonProps } = props as ButtonAsButton
+  const { ref, ...buttonProps } = props as ButtonAsButton;
   return (
     <button
       ref={ref}
