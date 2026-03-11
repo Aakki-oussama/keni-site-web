@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next"
 import { NAV_LINKS } from "./constants/navbar.constants"
 
 export const DesktopMenu = () => {
+  const { t } = useTranslation()
+
   return (
     <ul className="hidden md:flex items-center gap-1">
       {NAV_LINKS.map((link) => (
@@ -9,7 +12,7 @@ export const DesktopMenu = () => {
             href={link.href}
             className="relative font-marcellus text-zinc-900 px-[18px] py-2 transition-all duration-300 hover:text-brand flex items-center group"
           >
-            <span>{link.label}</span>
+            <span>{t(link.label)}</span>
             {/* Elegant Solid Diamond Marker */}
             <span className="nav-link-diamond" />
           </a>

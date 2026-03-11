@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "services": "Services",
+    "technologies": "Technologies",
+    "team": "Équipe",
+    "contact": "Contact",
+    "cta": "Prendre RDV"
+  },
+  "topbar": {
+    "location": "Casablanca, Maroc",
+    "phone": "06 00 00 00 00",
+    "social": {
+      "facebook": "Suivez-nous sur Facebook",
+      "instagram": "Suivez-nous sur Instagram",
+      "linkedin": "Suivez-nous sur LinkedIn",
+      "twitter": "Suivez-nous sur Twitter"
+    }
+  }
+}

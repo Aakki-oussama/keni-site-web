@@ -16,6 +16,7 @@ import {
   Zap,
   Component,
   Calendar,
+  Globe,
   type LucideIcon 
 } from "lucide-react";
 
@@ -63,6 +64,7 @@ export const Icons = {
   Zap,
   Component,
   Calendar,
+  Globe,
   
   // Expose configuration for easy access
   SIZES: ICON_SIZES,

@@ -16,10 +16,19 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src: url('./assets/fonts/noto-naskh-arabic-v44-latin-regular.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-marcellus: 'Marcellus', serif;
+  --font-arabic: 'Noto Naskh Arabic', serif;
 
   --color-brand: #C1121F;
   --color-brand-dark: #960d17;
@@ -30,6 +39,25 @@
   /* Standard Fade-in animation for initial page load visibility */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Universal utility for aligning icons with text across LTR and RTL */
+  .icon-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon-text span,
+  .icon-text a {
+    line-height: normal; /* High-quality Arabic needs normal line height to avoid clipping points */
+    display: inline-block;
+  }
+
+  /* Universal micro-adjustment: Lifts ALL icons by 1px in RTL mode to match Arabic x-height center */
+  [dir="rtl"] .icon-text svg {
+    position: relative;
+    top: -1px;
   }
 
   @keyframes fadeIn {
@@ -57,13 +85,17 @@
 
   /* Elegant Diamond marker for navigation links - Hidden by default, slides in on hover */
   .nav-link-diamond {
-    margin-left: 0.5rem;
+    margin-inline-start: 0.5rem;
     width: 0.375rem;
     height: 0.375rem;
     background-color: var(--color-brand);
     transform: rotate(45deg) translateX(-0.5rem);
     opacity: 0;
     transition: all 0.3s ease-out;
+  }
+
+  [dir="rtl"] .nav-link-diamond {
+    transform: rotate(45deg) translateX(0.5rem);
   }
 
   /* Trigger diamond animation when parent '.group' (the link) is hovered */
@@ -76,4 +108,15 @@
 body {
   font-family: var(--font-sans);
   background-color: #050505;
+}
+
+/* Automatically apply Arabic font for RTL direction */
+[dir="rtl"],
+[dir="rtl"] body {
+  font-family: var(--font-arabic), serif;
+}
+
+/* Ensure that elements using font-marcellus also switch to Arabic font in RTL */
+[dir="rtl"] .font-marcellus {
+  font-family: var(--font-arabic), serif;
 }

@@ -1,8 +1,8 @@
 // navbar.constants.ts
 export const NAV_LINKS = [
-    { label: "Accueil", href: "#hero" },
-    { label: "Services", href: "#services" },
-    { label: "Technologies", href: "#technologies" },
-    { label: "Équipe", href: "#team" },
-    { label: "Contact", href: "#contact" },
+    { label: "navbar.home", href: "#hero" },
+    { label: "navbar.services", href: "#services" },
+    { label: "navbar.technologies", href: "#technologies" },
+    { label: "navbar.team", href: "#team" },
+    { label: "navbar.contact", href: "#contact" },
 ]
