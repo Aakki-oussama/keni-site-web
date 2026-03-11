@@ -1,3 +1,5 @@
+// Barre supérieure affichant les infos de contact, les réseaux sociaux et le sélecteur de langue.
+// Visible uniquement sur Desktop (hidden md:block), utilise les constantes centralisées.
 import { useTranslation } from "react-i18next";
 import { Icons } from "../../components/shared/Icons";
 import { CONTACT_INFO, SOCIAL_LINKS } from "./constants/info.constants";

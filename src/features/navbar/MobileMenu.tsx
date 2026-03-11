@@ -1,3 +1,5 @@
+// Menu mobile en tiroir (drawer) avec détection de section active, LanguageSwitcher et CTA.
+// S'ouvre depuis la gauche (LTR) ou la droite (RTL) grâce aux propriétés logiques CSS.
 import { useTranslation } from "react-i18next";
 import { Icons } from "../../components/shared/Icons";
 import { NAV_LINKS } from "./constants/navbar.constants";

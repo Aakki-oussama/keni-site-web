@@ -1,3 +1,5 @@
+// Bouton de changement de langue FR/AR, compatible light (TopBar) et dark (MobileMenu).
+// Utilise i18n pour basculer la langue et ajuste automatiquement la police selon la direction.
 import { useTranslation } from 'react-i18next';
 
 interface LanguageSwitcherProps {

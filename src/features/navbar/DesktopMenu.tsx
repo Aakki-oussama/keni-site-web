@@ -1,3 +1,5 @@
+// Menu de navigation Desktop avec détection de la section active au scroll.
+// Affiche les liens avec un indicateur de couleur brand et une ligne animée sous le lien actif.
 import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "./constants/navbar.constants";
 import { useActiveSection } from "../../hooks/useActiveSection";

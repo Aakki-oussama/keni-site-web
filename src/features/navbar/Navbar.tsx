@@ -1,3 +1,5 @@
+// Composant principal de navigation : orchestre le TopBar, le menu Desktop et le menu Mobile.
+// Gère l'état d'ouverture du menu mobile et le support RTL/LTR.
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/logo.svg";
