@@ -38,7 +38,34 @@
 
   /* Standard Fade-in animation for initial page load visibility */
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  /* Slide-in from Start side (Left in LTR, Right in RTL) */
+  .animate-slide-in-start {
+    animation: slideInStart 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInStart {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  [dir="rtl"] .animate-slide-in-start {
+    animation: slideInStartRTL 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInStartRTL {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 
   /* Universal utility for aligning icons with text across LTR and RTL */
@@ -83,25 +110,29 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
-  /* Elegant Diamond marker for navigation links - Hidden by default, slides in on hover */
-  .nav-link-diamond {
-    margin-inline-start: 0.5rem;
-    width: 0.375rem;
-    height: 0.375rem;
+  /* Active Link Styles */
+  .nav-link-active {
+    color: var(--color-brand) !important;
+  }
+
+  .nav-line-indicator {
+    position: absolute;
+    bottom: -2px;
+    inset-inline-start: 18px; /* Logical positioning for LTR/RTL */
+    inset-inline-end: 18px;
+    height: 2px;
     background-color: var(--color-brand);
-    transform: rotate(45deg) translateX(-0.5rem);
-    opacity: 0;
-    transition: all 0.3s ease-out;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+    transform-origin: left;
   }
 
-  [dir="rtl"] .nav-link-diamond {
-    transform: rotate(45deg) translateX(0.5rem);
+  [dir="rtl"] .nav-line-indicator {
+    transform-origin: right;
   }
 
-  /* Trigger diamond animation when parent '.group' (the link) is hovered */
-  .group:hover .nav-link-diamond {
-    opacity: 1;
-    transform: rotate(45deg) translateX(0);
+  .nav-link-active .nav-line-indicator {
+    transform: scaleX(1);
   }
 }
 

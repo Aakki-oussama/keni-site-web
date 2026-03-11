@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Content starts here */}
       <main>
         {/* Sections will be added here */}

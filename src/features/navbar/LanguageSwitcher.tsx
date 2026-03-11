@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-export const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  variant?: 'light' | 'dark';
+}
+
+export const LanguageSwitcher = ({ variant = 'light' }: LanguageSwitcherProps) => {
   const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -9,11 +13,14 @@ export const LanguageSwitcher = () => {
   };
 
   const isAr = i18n.language === 'ar';
+  const isLight = variant === 'light';
 
   return (
     <button
       onClick={toggleLanguage}
-      className="py-0.5 border-b border-white"
+      className={`py-0.5 border-b transition-colors duration-300 ${
+        isLight ? 'border-white text-white' : 'border-gray-900 text-gray-900 hover:border-brand'
+      }`}
       aria-label={isAr ? "Changer la langue en Français" : "تغيير اللغة إلى العربية"}
     >
       <span className={`text-[13px] font-medium leading-none ${isAr ? 'font-sans' : 'font-arabic'}`}>
