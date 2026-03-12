@@ -1,4 +1,5 @@
 import { Navbar } from './features/navbar/Navbar'
+import { Hero } from './features/section/hero/Hero'
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
 
       {/* Content starts here */}
       <main>
-        {/* Sections will be added here */}
+        <Hero />
       </main>
     </div>
   )

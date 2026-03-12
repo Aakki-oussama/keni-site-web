@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+  --header-height: 240px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 160px; /* Mobile = pas de TopBar */
+  }
+}
+
 @font-face {
   font-family: 'Marcellus';
   src: url('./assets/fonts/marcellus-v14-latin-regular.woff2') format('woff2');
@@ -32,6 +42,7 @@
 
   --color-brand: #C1121F;
   --color-brand-dark: #960d17;
+  --color-brand-foncer: #401f21;
 }
 
 @layer utilities {
@@ -133,6 +144,101 @@
 
   .nav-link-active .nav-line-indicator {
     transform: scaleX(1);
+  }
+
+/* ═══════════════════════════════════════════
+     TYPOGRAPHY SYSTEM — Kini Osteo Sahaty
+     Utilise clamp() pour un responsive fluide
+     
+     GUIDE:
+     clamp(min, fluide, max)
+     min   = mobile (jamais sous 14px body, 28px h1)
+     fluide = tablette (vw)
+     max   = desktop
+  ═══════════════════════════════════════════ */
+
+  /* H1 — Hero Title */
+  /* Mobile: 28px | Desktop: 51px */
+  .text-h1 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-family: var(--font-marcellus);
+    line-height: 1.1;
+  }
+
+  /* H2 — Section Title */
+  /* Mobile: 24px | Desktop: 34px */
+  .text-h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-family: var(--font-marcellus);
+    line-height: 1.2;
+  }
+
+  /* H3 — Card Title */
+  /* Mobile: 16px | Desktop: 22px */
+  .text-h3 {
+    font-size: clamp(1rem, 1.75vw, 1.4rem);
+    font-family: var(--font-marcellus);
+    line-height: 1.3;
+  }
+
+  /* Body — Paragraphe */
+  /* Mobile: 14px | Desktop: 16px */
+  .text-body {
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    line-height: 1.75;
+  }
+
+  /* Small — Labels, badges */
+  /* Mobile: 12px | Desktop: 13px */
+  .text-small {
+    font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════
+     ARABIC OVERRIDES
+     Police arabe visuellement plus grande
+     → min augmenté + plus d'interligne
+  ═══════════════════════════════════════════ */
+
+  /* H1 Arabe */
+  /* Mobile: 26px | Desktop: 46px */
+  [dir="rtl"] .text-h1 {
+    font-size: clamp(1.625rem, 3.5vw, 2.875rem);
+    font-family: var(--font-arabic);
+    line-height: 1.3;
+  }
+
+  /* H2 Arabe */
+  /* Mobile: 22px | Desktop: 30px */
+  [dir="rtl"] .text-h2 {
+    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+    font-family: var(--font-arabic);
+    line-height: 1.4;
+  }
+
+  /* H3 Arabe */
+  /* Mobile: 15px | Desktop: 20px */
+  [dir="rtl"] .text-h3 {
+    font-size: clamp(0.9375rem, 1.5vw, 1.25rem);
+    font-family: var(--font-arabic);
+    line-height: 1.5;
+  }
+
+  /* Body Arabe */
+  /* Mobile: 14px | Desktop: 16px */
+  [dir="rtl"] .text-body {
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-family: var(--font-arabic);
+    line-height: 1.9;
+  }
+
+  /* Small Arabe */
+  /* Mobile: 12px | Desktop: 13px */
+  [dir="rtl"] .text-small {
+    font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+    font-family: var(--font-arabic);
+    line-height: 1.6;
   }
 }
 

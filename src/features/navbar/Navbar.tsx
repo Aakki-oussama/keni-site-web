@@ -35,7 +35,14 @@ export const Navbar = () => {
 
           {/* CTA Desktop */}
           <div className="hidden md:block">
-            <Button href="#contact">{t("navbar.cta")}</Button>
+            <Button
+              href="#contact"
+              variant="pill"
+              size="md"
+              icon={<Icons.ArrowRight size={14}/>}
+            >
+              {t("navbar.cta")}
+            </Button>
           </div>
 
           {/* Mobile Button */}

@@ -16,5 +16,14 @@
       "linkedin": "Suivez-nous sur LinkedIn",
       "twitter": "Suivez-nous sur Twitter"
     }
+  },
+  "hero": {
+    "trusted_care": "Soin de Confiance",
+    "title_part1": "Le Chemin",
+    "title_part2": "Vers une Vie",
+    "title_part3": "Sans Douleur",
+    "description": "Nos thérapeutes qualifiés conçoivent des programmes de récupération personnalisés juste pour vous. Chaque plan se concentre sur le soulagement de votre douleur.",
+    "feature_desc": "La kinésithérapie aide à restaurer le mouvement et à améliorer la fonction physique.",
+    "years_expertise": "Années d'Expertise"
   }
 }
