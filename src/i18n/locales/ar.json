@@ -24,6 +24,16 @@
     "title_part3": "بدون ألم",
     "description": "يصمم معالجونا المهرة برامج تعافي مخصصة لك فقط. يركز كل مخطط على تخفيف آلامك واستعادة حركتك.",
     "feature_desc": "يساعد العلاج الطبيعي على استعادة الحركة وتحسين الوظائف الجسدية.",
-    "years_expertise": "سنوات من الخبرة"
+    "years_expertise": "سنوات من الخبرة",
+    "feature_title": "مساعدة في علاج",
+    "images": {
+      "physio_work": "أخصائية علاج طبيعي تعمل",
+      "images.decoration.card": "",
+      "images.decoration.body": "",
+      "images.patients.satisfaits": "مرضى راضون"
+    }
+  },
+  "buttons": {
+    "openQuote": "احجز موعد"
   }
 }

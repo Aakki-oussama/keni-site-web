@@ -24,6 +24,16 @@
     "title_part3": "Sans Douleur",
     "description": "Nos thérapeutes qualifiés conçoivent des programmes de récupération personnalisés juste pour vous. Chaque plan se concentre sur le soulagement de votre douleur.",
     "feature_desc": "La kinésithérapie aide à restaurer le mouvement et à améliorer la fonction physique.",
-    "years_expertise": "Années d'Expertise"
+    "years_expertise": "Années d'Expertise",
+    "feature_title": "Physio Help\nHere",
+    "images": {
+      "physio_work": "Kinésithérapeute au travail",
+      "images.decoration.card": "",
+      "images.decoration.body": "",
+      "images.patients.satisfaits": "Patients satisfaits"
+    }
+  },
+  "buttons": {
+    "openQuote": "Prendre un rendez-vous"
   }
 }

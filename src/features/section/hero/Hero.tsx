@@ -15,12 +15,12 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-8">
 
           {/* 1. HeroStats — w-1/4 (25%) */}
-          <div className="w-full lg:w-1/4 order-3 lg:order-1">
+          <div className="w-full lg:w-1/4 order-2 lg:order-1">
             <HeroStats />
           </div>
 
           {/* 2. HeroGallery — w-1/3 (33.3%) */}
-          <div className="w-full lg:w-1/3 order-2 lg:order-2">
+          <div className="w-full lg:w-1/3 order-3 lg:order-2">
             <HeroGallery />
           </div>
 
