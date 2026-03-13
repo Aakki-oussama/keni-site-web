@@ -15,8 +15,9 @@ export const HeroStats = () => {
         <img
           src="/image-body/hero-doctors.jpg"
           alt={t("images.physio_work")}
-          decoding="async"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         {/* Overlay plus sombre pour meilleure lisibilité */}
@@ -28,10 +29,13 @@ export const HeroStats = () => {
           <p className="text-body text-white max-w-[180px]">
             {t("hero.feature_desc")}
           </p>
-          <button className="absolute bottom-8 end-8 w-10 h-10 bg-white rounded-full flex items-center justify-center text-white shadow-md"
-          aria-label={t("buttons.openQuote")}>
-            <Icons.ArrowRight size={20} className="-rotate-45 text-brand"/>
-          </button>
+          <a
+            href="#contact"
+            aria-label={t("buttons.openQuote")}
+            className="absolute bottom-8 end-8 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md"
+          >
+            <Icons.ArrowRight size={20} className="-rotate-45 text-brand" />
+          </a>
         </div>
       </Card>
 
@@ -79,5 +83,3 @@ export const HeroStats = () => {
     </div>
   );
 };
-
-
