@@ -29,13 +29,12 @@ export const HeroStats = () => {
           <p className="text-body text-white max-w-[180px]">
             {t("hero.feature_desc")}
           </p>
-          <a
-            href="#contact"
-            aria-label={t("buttons.openQuote")}
+          <div
+            aria-hidden="true"
             className="absolute bottom-8 end-8 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md"
           >
             <Icons.ArrowRight size={20} className="-rotate-45 text-brand" />
-          </a>
+          </div>
         </div>
       </Card>
 
