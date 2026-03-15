@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <path
+    transform="scale(1.7,1)"
+    d="M 200,0 
+       C 200,40 140,40 140,40 
+       H 120 
+       C 80,40 80,80 80,80 
+       V 120 
+       C 80,200 0,200 0,200 
+       H 0 
+       V 200 
+       H 200 
+       V 0 
+       Z"
+    fill="black"
+  />
+</svg>

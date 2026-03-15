@@ -1,28 +1,49 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import fr from './locales/fr.json';
-import ar from './locales/ar.json';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+import fr from "./locales/fr.json";
+import ar from "./locales/ar.json";
 
 const resources = {
   fr: { translation: fr },
   ar: { translation: ar },
 };
 
+// detect browser language
+const browserLang = navigator.language.split("-")[0];
+
+// check saved language
+const savedLang = localStorage.getItem("lang");
+
+// choose language priority
+const language =
+  savedLang || (["fr", "ar"].includes(browserLang) ? browserLang : "fr");
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'fr', // default language
-    fallbackLng: 'fr',
+    lng: language,
+    fallbackLng: "fr",
+    supportedLngs: ["fr", "ar"],
     interpolation: {
       escapeValue: false,
     },
+    react: {
+      useSuspense: false,
+    },
   });
 
-// Automatically handle the 'dir' attribute and 'lang' attribute on change
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+// set direction immediately
+document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+document.documentElement.lang = language;
+
+// update when language changes
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
   document.documentElement.lang = lng;
+
+  localStorage.setItem("lang", lng);
 });
 
 export default i18n;

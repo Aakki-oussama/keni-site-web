@@ -1,37 +1,85 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { Reveal } from "../../../../components/shared/Reveal";
+
+const MASK_IMAGE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 380' preserveAspectRatio='none'%3E%3Cpath d='M40,0 H220 Q260,0 260,40 V280 C260,320 220,320 220,320 H200 C160,320 160,380 160,380 H40 Q0,380 0,340 V40 Q0,0 40,0 Z' fill='black'/%3E%3C/svg%3E")`;
 
 export const HeroGallery = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+  const { t, i18n } = useTranslation();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isRTL = i18n.dir() === "rtl";
 
-    return (
-        <div className="relative group animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            {/* Main Image Container */}
-            <div className="relative aspect-[4/5] rounded-[60px] overflow-hidden border-8 border-white/50 shadow-xl">
-                <img 
-                    src="https://images.unsplash.com/photo-1576091160550-217359f4ecf8?auto=format&fit=crop&q=80&w=1000" 
-                    alt="Therapist with patient"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
+  // 1. Liste des images pour le carousel
+  const images = [
+    "/image-body/hero-patient.jpg",
+    "/image-body/home-slider-2.jpg",
+    "/image-body/home-slider-3-.jpg",
+  ];
 
-                {/* Pagination Dots */}
-                <div className="absolute bottom-10 inset-x-0 flex justify-center gap-3">
-                    {[0, 1, 2].map((i) => (
-                        <button
-                            key={i}
-                            onClick={() => setActiveIndex(i)}
-                            className={`h-2.5 rounded-full transition-all duration-300 ${
-                                activeIndex === i ? 'w-8 bg-white' : 'w-2.5 bg-white/40'
-                            }`}
-                        />
-                    ))}
-                </div>
-            </div>
+  // Pre-chargement (Preload) des images en arrière-plan
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
-            {/* Floating shadow effect */}
-            <div className="absolute -inset-4 bg-brand/5 blur-3xl -z-10 opacity-50" />
+  return (
+    <Reveal animation="animate-enter-left" delay="delay-700" className="w-full aspect-[4/5] lg:aspect-auto lg:h-full">
+      <div className="relative group w-full h-full">
+        <div
+          className="absolute inset-0 shadow-2xl"
+          style={{
+            WebkitMaskImage: MASK_IMAGE,
+            maskImage: MASK_IMAGE,
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            // Si Arabe (RTL), on retourne tout le conteneur du masque
+            transform: isRTL ? "scaleX(-1)" : "none",
+          }}
+        >
+          {/* 2. Affichage dynamique de l'image active */}
+          <img
+            key={activeIndex}
+            src={images[activeIndex]}
+            alt={`${t("images.gallery_doctor")} ${activeIndex + 1}`}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            style={{
+              // TRÈS IMPORTANT: On retourne l'image à l'envers pour qu'elle s'affiche à l'endroit !
+              transform: isRTL ? "scaleX(-1)" : "none",
+            }}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-fade-in"
+          />
+          {/* On retourne aussi le dégradé pour qu'il reste logique */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" 
+            style={{ transform: isRTL ? "scaleX(-1)" : "none" }}
+          />
         </div>
-    );
+
+        <div className="absolute bottom-[3%] end-[2%] sm:bottom-[4%] sm:end-[8%] lg:bottom-[5%] lg:end-[6%] z-20 flex items-center">
+          {[0, 1, 2].map((i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 lg:w-8 lg:h-8 focus:outline-none group"
+            >
+              {/* Le point avec effet Swiper (box-shadow/ring) — Taille responsive */}
+              <div
+                className={`rounded-full bg-white transition-all duration-300 ${
+                  activeIndex === i
+                    ? "w-2.5 h-2.5 sm:w-4.5 sm:h-4.5 lg:w-2.5 lg:h-2.5 opacity-100 ring-[8px] sm:ring-[12px] lg:ring-[8px] ring-white/10"
+                    : "w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-2 lg:h-2 opacity-40 group-hover:opacity-100 group-hover:ring-[4px] group-hover:ring-white/20"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="absolute -inset-4 bg-brand/5 blur-3xl -z-10 opacity-50 pointer-events-none" />
+    </Reveal>
+  );
 };

@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════
+   CSS VARIABLES GLOBALES
+   Modifiez ici pour changer tout le site
+═══════════════════════════════════════════ */
 :root {
   --header-height: 240px;
 }
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 160px; /* Mobile = pas de TopBar */
+    --header-height: 160px; /* Mobile = TopBar cachée */
   }
 }
 
+/* ═══════════════════════════════════════════
+   POLICES LOCALES
+   Téléchargées localement pour performance maximale
+   → pas de requêtes Google Fonts
+═══════════════════════════════════════════ */
 @font-face {
   font-family: 'Marcellus';
   src: url('./assets/fonts/marcellus-v14-latin-regular.woff2') format('woff2');
@@ -34,226 +43,238 @@
   font-style: normal;
 }
 
-
+/* ═══════════════════════════════════════════
+   THEME TAILWIND v4
+   Tokens de design — couleurs, polices
+   Utilisez via: text-brand, bg-brand, font-marcellus
+═══════════════════════════════════════════ */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-marcellus: 'Marcellus', serif;
   --font-arabic: 'Noto Naskh Arabic', serif;
 
-  --color-brand: #C1121F;
-  --color-brand-dark: #960d17;
-  --color-brand-foncer: #401f21;
+  --color-brand: #C1121F;        /* Rouge principal */
+  --color-brand-dark: #960d17;   /* Rouge hover */
+  --color-brand-foncer: #401f21; /* Rouge très sombre — fond Hero */
 }
-
-@layer utilities {
-
-  /* Standard Fade-in animation for initial page load visibility */
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
-
-  /* Slide-in from Start side (Left in LTR, Right in RTL) */
-  .animate-slide-in-start {
-    animation: slideInStart 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes slideInStart {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  [dir="rtl"] .animate-slide-in-start {
-    animation: slideInStartRTL 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes slideInStartRTL {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  /* Universal utility for aligning icons with text across LTR and RTL */
-  .icon-text {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .icon-text span,
-  .icon-text a {
-    line-height: normal; /* High-quality Arabic needs normal line height to avoid clipping points */
-    display: inline-block;
-  }
-
-  /* Universal micro-adjustment: Lifts ALL icons by 1px in RTL mode to match Arabic x-height center */
-  [dir="rtl"] .icon-text svg {
-    position: relative;
-    top: -1px;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-@layer components {
-
-  /* Signature Glassmorphism style: semi-transparent white with blur and soft shadow */
-  .glass-pill {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(243, 244, 246, 1);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-
-  /* Active Link Styles */
-  .nav-link-active {
-    color: var(--color-brand) !important;
-  }
-
-  .nav-line-indicator {
-    position: absolute;
-    bottom: -2px;
-    inset-inline-start: 18px; /* Logical positioning for LTR/RTL */
-    inset-inline-end: 18px;
-    height: 2px;
-    background-color: var(--color-brand);
-    transform: scaleX(0);
-    transition: transform 0.3s ease-out;
-    transform-origin: left;
-  }
-
-  [dir="rtl"] .nav-line-indicator {
-    transform-origin: right;
-  }
-
-  .nav-link-active .nav-line-indicator {
-    transform: scaleX(1);
-  }
 
 /* ═══════════════════════════════════════════
-     TYPOGRAPHY SYSTEM — Kini Osteo Sahaty
-     Utilise clamp() pour un responsive fluide
-     
-     GUIDE:
-     clamp(min, fluide, max)
-     min   = mobile (jamais sous 14px body, 28px h1)
-     fluide = tablette (vw)
-     max   = desktop
-  ═══════════════════════════════════════════ */
+   CUSTOM UTILITIES — Tailwind v4
+   Syntaxe: @utility nom-classe { ... }
+   Ces classes s'utilisent directement dans className=""
+═══════════════════════════════════════════ */
 
-  /* H1 — Hero Title */
-  /* Mobile: 28px | Desktop: 51px */
-  .text-h1 {
-    font-size: clamp(2rem, 4vw, 3.3rem);
-    font-family: var(--font-marcellus);
-    line-height: 1.1;
+/* Arrivée depuis la GAUCHE (Auto-inversé en RTL) */
+@utility animate-enter-left {
+  animation: enterLeft 0.8s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Arrivée depuis la DROITE (Auto-inversé en RTL) */
+@utility animate-enter-right {
+  animation: enterRight 0.8s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Délais pour l'effet cascade */
+@utility delay-300 { animation-delay: 300ms; }
+@utility delay-400 { animation-delay: 400ms; }
+@utility delay-500 { animation-delay: 500ms; }
+@utility delay-600 { animation-delay: 600ms; }
+@utility delay-700 { animation-delay: 700ms; }
+@utility delay-800 { animation-delay: 800ms; }
+@utility delay-900 { animation-delay: 900ms; }
+@utility delay-1000 { animation-delay: 1000ms; }
+
+/* Icône + texte alignés — LTR et RTL */
+@utility icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Glass pill — navbar flottante */
+@utility glass-pill {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(243, 244, 246, 1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* ─── Nav Link Active ─── */
+@utility nav-link-active {
+  color: var(--color-brand);
+}
+
+/* ═══════════════════════════════════════════
+   OVERRIDES RTL — en dehors de @utility
+   car @utility ne supporte pas [dir="rtl"]
+═══════════════════════════════════════════ */
+
+
+
+/* ═══════════════════════════════════════════ */
+
+
+/* Icon text RTL — micro-ajustement icône */
+[dir="rtl"] .icon-text svg {
+  position: relative;
+  top: -1px;
+}
+
+[dir="rtl"] .icon-text span,
+[dir="rtl"] .icon-text a {
+  line-height: normal;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAMES — animations
+═══════════════════════════════════════════ */
+@keyframes enterLeft {
+  from { 
+    opacity: 0;
+    transform: translateX(-50px); 
   }
-
-  /* H2 — Section Title */
-  /* Mobile: 24px | Desktop: 34px */
-  .text-h2 {
-    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-    font-family: var(--font-marcellus);
-    line-height: 1.2;
-  }
-
-  /* H3 — Card Title */
-  /* Mobile: 16px | Desktop: 22px */
-  .text-h3 {
-    font-size: clamp(1rem, 1.75vw, 1.4rem);
-    font-family: var(--font-marcellus);
-    line-height: 1.3;
-  }
-
-  /* Body — Paragraphe */
-  /* Mobile: 14px | Desktop: 16px */
-  .text-body {
-    font-size: clamp(0.875rem, 1vw, 1rem);
-    line-height: 1.75;
-  }
-
-  /* Small — Labels, badges */
-  /* Mobile: 12px | Desktop: 13px */
-  .text-small {
-    font-size: clamp(0.75rem, 0.9vw, 0.8rem);
-    line-height: 1.5;
-  }
-
-  /* ═══════════════════════════════════════════
-     ARABIC OVERRIDES
-     Police arabe visuellement plus grande
-     → min augmenté + plus d'interligne
-  ═══════════════════════════════════════════ */
-
-  /* H1 Arabe */
-  /* Mobile: 26px | Desktop: 46px */
-  [dir="rtl"] .text-h1 {
-    font-size: clamp(1.625rem, 3.5vw, 2.875rem);
-    font-family: var(--font-arabic);
-    line-height: 1.3;
-  }
-
-  /* H2 Arabe */
-  /* Mobile: 22px | Desktop: 30px */
-  [dir="rtl"] .text-h2 {
-    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
-    font-family: var(--font-arabic);
-    line-height: 1.4;
-  }
-
-  /* H3 Arabe */
-  /* Mobile: 15px | Desktop: 20px */
-  [dir="rtl"] .text-h3 {
-    font-size: clamp(0.9375rem, 1.5vw, 1.25rem);
-    font-family: var(--font-arabic);
-    line-height: 1.5;
-  }
-
-  /* Body Arabe */
-  /* Mobile: 14px | Desktop: 16px */
-  [dir="rtl"] .text-body {
-    font-size: clamp(0.875rem, 1vw, 1rem);
-    font-family: var(--font-arabic);
-    line-height: 1.9;
-  }
-
-  /* Small Arabe */
-  /* Mobile: 12px | Desktop: 13px */
-  [dir="rtl"] .text-small {
-    font-size: clamp(0.75rem, 0.9vw, 0.8rem);
-    font-family: var(--font-arabic);
-    line-height: 1.6;
+  to { 
+    opacity: 1;
+    transform: translateX(0); 
   }
 }
 
+@keyframes enterRight {
+  from { 
+    opacity: 0;
+    transform: translateX(60px); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0); 
+  }
+}
+
+/* 🔄 Inversion RTL : La gauche devient la droite et vice-versa */
+[dir="rtl"] .animate-enter-left {
+  animation-name: enterRight;
+}
+
+[dir="rtl"] .animate-enter-right {
+  animation-name: enterLeft;
+}
+
+/* ═══════════════════════════════════════════
+   NAVBAR — indicateur ligne active
+═══════════════════════════════════════════ */
+.nav-line-indicator {
+  position: absolute;
+  bottom: -2px;
+  inset-inline-start: 18px;
+  inset-inline-end: 18px;
+  height: 2px;
+  background-color: var(--color-brand);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+  transform-origin: left;
+}
+
+[dir="rtl"] .nav-line-indicator {
+  transform-origin: right;
+}
+
+.nav-link-active .nav-line-indicator {
+  transform: scaleX(1);
+}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY SYSTEM — Kini Osteo Sahaty
+   clamp(min, fluide, max)
+   min   = mobile  (jamais sous 14px body, 28px h1)
+   fluide = tablette (vw)
+   max   = desktop
+═══════════════════════════════════════════ */
+
+/* H1 — Hero Title | Mobile: 32px | Desktop: 53px */
+.text-h1 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-family: var(--font-marcellus);
+  line-height: 1.1;
+}
+
+/* H2 — Section Title | Mobile: 24px | Desktop: 34px */
+.text-h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-family: var(--font-marcellus);
+  line-height: 1.2;
+}
+
+/* H3 — Card Title | Mobile: 16px | Desktop: 22px */
+.text-h3 {
+  font-size: clamp(1rem, 1.75vw, 1.4rem);
+  font-family: var(--font-marcellus);
+  line-height: 1.3;
+}
+
+/* Body — Paragraphe | Mobile: 14px | Desktop: 16px */
+.text-body {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  line-height: 1.75;
+}
+
+/* Small — Labels, badges | Mobile: 12px | Desktop: 13px */
+.text-small {
+  font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+  line-height: 1.5;
+}
+
+/* ─── Arabic Overrides ───
+   Police arabe visuellement plus grande
+   → tailles réduites + interligne augmenté
+*/
+[dir="rtl"] .text-h1 {
+  font-size: clamp(1.625rem, 3.5vw, 2.875rem);
+  font-family: var(--font-arabic);
+  line-height: 1.3;
+}
+
+[dir="rtl"] .text-h2 {
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  font-family: var(--font-arabic);
+  line-height: 1.4;
+}
+
+[dir="rtl"] .text-h3 {
+  font-size: clamp(0.9375rem, 1.5vw, 1.25rem);
+  font-family: var(--font-arabic);
+  line-height: 1.5;
+}
+
+[dir="rtl"] .text-body {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-family: var(--font-arabic);
+  line-height: 1.9;
+}
+
+[dir="rtl"] .text-small {
+  font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+  font-family: var(--font-arabic);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   BASE STYLES
+═══════════════════════════════════════════ */
 body {
   font-family: var(--font-sans);
   background-color: #050505;
 }
 
-/* Automatically apply Arabic font for RTL direction */
+/* Police arabe automatique en RTL */
 [dir="rtl"],
 [dir="rtl"] body {
   font-family: var(--font-arabic), serif;
 }
 
-/* Ensure that elements using font-marcellus also switch to Arabic font in RTL */
+/* font-marcellus → police arabe en RTL */
 [dir="rtl"] .font-marcellus {
   font-family: var(--font-arabic), serif;
 }

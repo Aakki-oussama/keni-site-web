@@ -18,7 +18,7 @@ export const DesktopMenu = () => {
             <a
               href={link.href}
               className={`relative font-marcellus px-[18px] py-2 transition-all duration-300 flex items-center group ${
-                isActive ? "nav-link-active" : "text-zinc-900 hover:text-brand"
+                isActive ? "nav-link-active" : "text-black hover:text-brand"
               }`}
             >
               <span className={isActive ? "font-bold" : ""}>
