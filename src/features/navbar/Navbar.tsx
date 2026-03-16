@@ -2,7 +2,6 @@
 // Gère l'état d'ouverture du menu mobile et le support RTL/LTR.
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import logo from "../../assets/logo.svg";
 import { Icons } from "../../components/shared/Icons";
 import { TopBar } from "./TopBar";
 import { DesktopMenu } from "./DesktopMenu";
@@ -25,7 +24,13 @@ export const Navbar = () => {
         <nav className="glass-pill px-8 h-20 rounded-[40px] flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="shrink-0">
-            <img src={logo} alt="Kini Osteo Sahaty" className="h-10 w-auto" />
+            <img 
+              src="/logo.svg" 
+              alt="Kini Osteo Sahaty" 
+              className="h-10 w-auto" 
+              width={160} 
+              height={40} 
+            />
           </a>
 
           {/* Desktop Menu */}

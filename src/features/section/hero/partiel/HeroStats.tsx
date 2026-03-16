@@ -44,7 +44,7 @@ export const HeroStats = () => {
       <Reveal animation="animate-enter-left" delay="delay-300" className="w-full">
         <Card className="relative bg-brand p-8 aspect-auto lg:aspect-[4/3] flex flex-col justify-between gap-8 lg:gap-0 group shadow-xl min-h-[160px] lg:min-h-0 w-full">
           <img
-            src="/image-body/decoration-body-card.webp"
+            src="/images/decoration-body-card.webp"
             alt={t("images.decoration.card")}
             width={400}
             height={300}
@@ -63,7 +63,7 @@ export const HeroStats = () => {
           {/* Avatars + compteur */}
           <div className="flex items-center relative z-10">
             <img
-              src="/team/reviewers-new.webp"
+              src="/images/reviewers-new.webp"
               alt={t("images.patients.satisfaits")}
               className="h-8 w-auto"
               width="64"
@@ -77,7 +77,7 @@ export const HeroStats = () => {
           {/* Spine SVG décoratif */}
           <div className="absolute end-0 bottom-0 w-[193px] h-[185px]">
             <img
-              src="/image-body/decoration-card.png"
+              src="/images/decoration-card.png"
               alt={t("images.decoration.card")}
               width={193}
               height={185}

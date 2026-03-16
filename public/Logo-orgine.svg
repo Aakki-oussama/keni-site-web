@@ -1,11 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60">
   <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Marcellus&amp;display=swap');
-      .logo-text { font-family: 'Marcellus', Georgia, serif; font-size: 46px; fill: #C1121F; }
-      .icon-main { fill: #C1121F; }
-      .icon-dots { fill: #960d17; }
-    </style>
+<style>
+  @font-face {
+    font-family: 'Marcellus';
+    src: url('../fonts/Marcellus-Regular.ttf') format('truetype');
+  }
+  .logo-text { font-family: 'Marcellus', Georgia, serif; font-size: 46px; fill: #C1121F; }
+  .icon-main { fill: #C1121F; }
+  .icon-dots { fill: #960d17; }
+</style>
   </defs>
 
   <!-- S -->

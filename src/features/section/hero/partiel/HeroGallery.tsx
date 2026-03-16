@@ -4,24 +4,21 @@ import { Reveal } from "../../../../components/shared/Reveal";
 
 const MASK_IMAGE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 380' preserveAspectRatio='none'%3E%3Cpath d='M40,0 H220 Q260,0 260,40 V280 C260,320 220,320 220,320 H200 C160,320 160,380 160,380 H40 Q0,380 0,340 V40 Q0,0 40,0 Z' fill='black'/%3E%3C/svg%3E")`;
 
+// 1. Liste des images pour le carousel (Sortie du composant pour performance)
+const HERO_IMAGES = [
+  "/images/hero-slider-1.jpg",
+  "/images/hero-slider-2.jpg",
+  "/images/hero-slider-3.jpg",
+];
+
 export const HeroGallery = () => {
   const { t, i18n } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const isRTL = i18n.dir() === "rtl";
 
-  // 1. Liste des images pour le carousel
-  const images = [
-    "/image-body/hero-patient.jpg",
-    "/image-body/home-slider-2.jpg",
-    "/image-body/home-slider-3-.jpg",
-  ];
-
-  // Pre-chargement (Preload) des images en arrière-plan
+  // Pre-chargement (Preload) intelligent : on ignore la 1ère image (déjà chargée par le navigateur)
   useEffect(() => {
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    HERO_IMAGES.slice(1).forEach((src) => (new Image().src = src));
   }, []);
 
   return (
@@ -41,8 +38,12 @@ export const HeroGallery = () => {
           {/* 2. Affichage dynamique de l'image active */}
           <img
             key={activeIndex}
-            src={images[activeIndex]}
+            src={HERO_IMAGES[activeIndex]}
             alt={`${t("images.gallery_doctor")} ${activeIndex + 1}`}
+            width={800}
+            height={1000}
+            // sizes aide le navigateur à choisir la bonne résolution (Responsive)
+            sizes="(max-width: 768px) 100vw, 50vw"
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -50,7 +51,8 @@ export const HeroGallery = () => {
               // TRÈS IMPORTANT: On retourne l'image à l'envers pour qu'elle s'affiche à l'endroit !
               transform: isRTL ? "scaleX(-1)" : "none",
             }}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-fade-in"
+            // will-change-transform prévient le GPU pour une animation ultra-fluide
+            className="absolute inset-0 w-full h-full object-cover will-change-transform transition-transform duration-700 group-hover:scale-105 animate-fade-in"
           />
           {/* On retourne aussi le dégradé pour qu'il reste logique */}
           <div 
@@ -60,7 +62,8 @@ export const HeroGallery = () => {
         </div>
 
         <div className="absolute bottom-[3%] end-[2%] sm:bottom-[4%] sm:end-[8%] lg:bottom-[5%] lg:end-[6%] z-20 flex items-center">
-          {[0, 1, 2].map((i) => (
+          {/* Mapping dynamique : si on ajoute une image dans HERO_IMAGES, le bouton apparaît seul */}
+          {HERO_IMAGES.map((_, i) => (
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
@@ -79,7 +82,7 @@ export const HeroGallery = () => {
           ))}
         </div>
       </div>
-      <div className="absolute -inset-4 bg-brand/5 blur-3xl -z-10 opacity-50 pointer-events-none" />
+      <div className="absolute -inset-4 bg-brand/60 blur-3xl -z-10 opacity-10 pointer-events-none" />
     </Reveal>
   );
 };

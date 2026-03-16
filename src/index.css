@@ -6,6 +6,7 @@
 ═══════════════════════════════════════════ */
 :root {
   --header-height: 240px;
+  --dir: 1;
 }
 
 @media (max-width: 768px) {
@@ -21,7 +22,7 @@
 ═══════════════════════════════════════════ */
 @font-face {
   font-family: 'Marcellus';
-  src: url('./assets/fonts/marcellus-v14-latin-regular.woff2') format('woff2');
+  src: url('/fonts/marcellus-v14-latin-regular.woff2') format('woff2');
   font-display: swap;
   font-weight: normal;
   font-style: normal;
@@ -29,7 +30,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('./assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
+  src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
   font-display: swap;
   font-weight: 100 900;
   font-style: normal;
@@ -37,7 +38,7 @@
 
 @font-face {
   font-family: 'Noto Naskh Arabic';
-  src: url('./assets/fonts/noto-naskh-arabic-v44-latin-regular.woff2') format('woff2');
+  src: url('/fonts/noto-naskh-arabic-v44-latin-regular.woff2') format('woff2');
   font-display: swap;
   font-weight: normal;
   font-style: normal;
@@ -72,6 +73,11 @@
 /* Arrivée depuis la DROITE (Auto-inversé en RTL) */
 @utility animate-enter-right {
   animation: enterRight 0.8s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* Fondu doux au chargement (Neutre directionnel) */
+@utility animate-fade-in {
+  animation: softFadeIn 1.2s cubic-bezier(0.2, 0, 0, 1) both;
 }
 
 /* Délais pour l'effet cascade */
@@ -110,10 +116,9 @@
    OVERRIDES RTL — en dehors de @utility
    car @utility ne supporte pas [dir="rtl"]
 ═══════════════════════════════════════════ */
-
-
-
-/* ═══════════════════════════════════════════ */
+[dir="rtl"] {
+  --dir: -1;
+}
 
 
 /* Icon text RTL — micro-ajustement icône */
@@ -134,7 +139,7 @@
 @keyframes enterLeft {
   from { 
     opacity: 0;
-    transform: translateX(-50px); 
+    transform: translateX(calc(-60px * var(--dir))); 
   }
   to { 
     opacity: 1;
@@ -145,7 +150,7 @@
 @keyframes enterRight {
   from { 
     opacity: 0;
-    transform: translateX(60px); 
+    transform: translateX(calc(60px * var(--dir))); 
   }
   to { 
     opacity: 1;
@@ -153,13 +158,15 @@
   }
 }
 
-/* 🔄 Inversion RTL : La gauche devient la droite et vice-versa */
-[dir="rtl"] .animate-enter-left {
-  animation-name: enterRight;
-}
-
-[dir="rtl"] .animate-enter-right {
-  animation-name: enterLeft;
+@keyframes softFadeIn {
+  from { 
+    opacity: 0;
+    transform: scale(1.05); 
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1); 
+  }
 }
 
 /* ═══════════════════════════════════════════
