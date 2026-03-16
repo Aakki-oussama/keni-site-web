@@ -12,7 +12,7 @@ export const HeroStats = () => {
       <Reveal animation="animate-enter-left" delay="delay-300" className="w-full">
         <Card className="aspect-square group w-full">
           <img
-            src="/image-body/hero-doctors.jpg"
+            src="/images/hero-doctors.jpg"
             alt={t("images.physio_work")}
             width={400}
             height={400}

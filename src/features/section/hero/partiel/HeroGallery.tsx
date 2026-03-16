@@ -22,7 +22,7 @@ export const HeroGallery = () => {
   }, []);
 
   return (
-    <Reveal animation="animate-enter-left" delay="delay-700" className="w-full aspect-[4/5] lg:aspect-auto lg:h-full">
+    <Reveal animation="animate-enter-left" delay="delay-600" className="w-full aspect-[4/5] lg:aspect-auto lg:h-full">
       <div className="relative group w-full h-full">
         <div
           className="absolute inset-0 shadow-2xl"
