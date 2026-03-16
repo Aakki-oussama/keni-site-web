@@ -25,14 +25,16 @@ export const HeroGallery = () => {
     <Reveal animation="animate-enter-left" delay="delay-600" className="w-full aspect-[4/5] lg:aspect-auto lg:h-full">
       <div className="relative group w-full h-full">
         <div
-          className="absolute inset-0 shadow-2xl"
+          className="absolute inset-0 shadow-2xl bg-slate-200" // Fond tampon pour éviter le vide sur iPhone
           style={{
             WebkitMaskImage: MASK_IMAGE,
             maskImage: MASK_IMAGE,
             WebkitMaskSize: "100% 100%",
             maskSize: "100% 100%",
-            // Si Arabe (RTL), on retourne tout le conteneur du masque
-            transform: isRTL ? "scaleX(-1)" : "none",
+            WebkitBackfaceVisibility: "hidden", // Stabilise le rendu sur iOS
+            backfaceVisibility: "hidden",
+            // Forcer l'accélération GPU (translateZ) pour éviter les clignotements du masque
+            transform: isRTL ? "scaleX(-1) translateZ(0)" : "translateZ(0)",
           }}
         >
           {/* 2. Affichage dynamique de l'image active */}
