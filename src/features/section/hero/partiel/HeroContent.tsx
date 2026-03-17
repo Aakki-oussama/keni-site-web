@@ -14,7 +14,7 @@ export const HeroContent = () => {
                 <Badge label={t('hero.trusted_care')} className="mb-0" />
 
                 {/* Main Title */}
-                <h1 className="text-h1 text-white">
+                <h1 id="hero-heading" className="text-h1 text-white">
                     {t('hero.title_part1')} <span className="text-brand">{t('hero.title_part2')}</span> {t('hero.title_part3')}
                 </h1>
 

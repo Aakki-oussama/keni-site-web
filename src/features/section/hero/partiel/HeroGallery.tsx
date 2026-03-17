@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "../../../../components/shared/Reveal";
 
-const MASK_IMAGE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 380' preserveAspectRatio='none'%3E%3Cpath d='M40,0 H220 Q260,0 260,40 V280 C260,320 220,320 220,320 H200 C160,320 160,380 160,380 H40 Q0,380 0,340 V40 Q0,0 40,0 Z' fill='black'/%3E%3C/svg%3E")`;
 
 // 1. Liste des images pour le carousel (Sortie du composant pour performance)
 const HERO_IMAGES = [
@@ -22,69 +21,83 @@ export const HeroGallery = () => {
   }, []);
 
   return (
-    <Reveal animation="animate-enter-left" delay="delay-600" className="w-full aspect-[4/5] lg:aspect-auto lg:h-full">
-      <div className="relative group w-full h-full">
+    <Reveal 
+      animation="animate-enter-left" 
+      delay="delay-600" 
+      className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-full"
+    >
+      {/* 🟢 CONTENEUR PARENT : Synchronisation des dimensions du "Trou" */}
+      <div 
+        className="relative group w-full h-full"
+        style={{ 
+          // ⚠️ --split-x = 0.66 and --split-y = 0.85 must match
+          // the clip-path cut-out in ClipPaths.tsx
+          // If you change the shape, update these values too
+          ['--split-x' as any]: '0.66', 
+          ['--split-y' as any]: '0.85',
+          transform: isRTL ? "scaleX(-1) translateZ(0)" : "translateZ(0)" 
+        }}
+      >
+        {/* Lueur décorative */}
+        <div className="absolute -inset-4 bg-brand/60 blur-3xl -z-10 opacity-10 pointer-events-none" />
+        
+        {/* LE CADRE DE L'IMAGE (Clipped) */}
         <div
-          className="absolute inset-0 shadow-2xl bg-slate-200" // Fond tampon pour éviter le vide sur iPhone
+          className="absolute inset-0 shadow-2xl bg-slate-200 overflow-hidden"
           style={{
-            WebkitMaskImage: MASK_IMAGE,
-            maskImage: MASK_IMAGE,
-            WebkitMaskSize: "100% 100%",
-            maskSize: "100% 100%",
-            WebkitBackfaceVisibility: "hidden", // Stabilise le rendu sur iOS
+            clipPath: 'url(#clip-gallery)',
+            WebkitClipPath: 'url(#clip-gallery)',
+            WebkitBackfaceVisibility: "hidden",
             backfaceVisibility: "hidden",
-            // Forcer l'accélération GPU (translateZ) pour éviter les clignotements du masque
-            transform: isRTL ? "scaleX(-1) translateZ(0)" : "translateZ(0)",
           }}
         >
-          {/* 2. Affichage dynamique de l'image active */}
+          {/* L'IMAGE : On annule le miroir du parent pour que l'image reste dans le bon sens */}
           <img
             key={activeIndex}
             src={HERO_IMAGES[activeIndex]}
             alt={`${t("images.gallery_doctor")} ${activeIndex + 1}`}
             width={800}
             height={1000}
-            // sizes aide le navigateur à choisir la bonne résolution (Responsive)
             sizes="(max-width: 768px) 100vw, 50vw"
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            style={{
-              // TRÈS IMPORTANT: On retourne l'image à l'envers pour qu'elle s'affiche à l'endroit !
-              transform: isRTL ? "scaleX(-1)" : "none",
-            }}
-            // will-change-transform prévient le GPU pour une animation ultra-fluide
-            className="absolute inset-0 w-full h-full object-cover will-change-transform transition-transform duration-700 group-hover:scale-105 animate-fade-in"
-          />
-          {/* On retourne aussi le dégradé pour qu'il reste logique */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-fade-in"
             style={{ transform: isRTL ? "scaleX(-1)" : "none" }}
           />
+
+          {/* Dégradé sombre */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
         </div>
 
-        <div className="absolute bottom-[3%] end-[2%] sm:bottom-[4%] sm:end-[8%] lg:bottom-[5%] lg:end-[6%] z-20 flex items-center">
-          {/* Mapping dynamique : si on ajoute une image dans HERO_IMAGES, le bouton apparaît seul */}
-          {HERO_IMAGES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 lg:w-8 lg:h-8 focus:outline-none group"
-            >
-              {/* Le point avec effet Swiper (box-shadow/ring) — Taille responsive */}
-              <div
-                className={`rounded-full bg-white transition-all duration-300 ${
-                  activeIndex === i
-                    ? "w-2.5 h-2.5 sm:w-4.5 sm:h-4.5 lg:w-2.5 lg:h-2.5 opacity-100 ring-[8px] sm:ring-[12px] lg:ring-[8px] ring-white/10"
-                    : "w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-2 lg:h-2 opacity-40 group-hover:opacity-100 group-hover:ring-[4px] group-hover:ring-white/20"
-                }`}
-              />
-            </button>
-          ))}
+        {/* 🚀 LA PAGINATION AUTO-SYNCHRONISÉE */}
+        <div 
+          className="absolute bottom-0 right-0 flex items-center justify-center p-[2%]"
+          style={{ 
+            width: 'calc((1 - var(--split-x)) * 100%)', 
+            height: 'calc((1 - var(--split-y)) * 100%)',
+          }}
+        >
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+            {HERO_IMAGES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 focus:outline-none group pointer-events-auto"
+              >
+                <div
+                  className={`rounded-full bg-white transition-all duration-300 ${
+                    activeIndex === i
+                      ? "w-2 h-2 sm:w-2.5 sm:h-2.5 opacity-100 ring-[6px] sm:ring-[8px] ring-white/10"
+                      : "w-1.5 h-1.5 sm:w-2 sm:h-2 opacity-40 group-hover:opacity-100 group-hover:ring-[3px] group-hover:ring-white/20"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="absolute -inset-4 bg-brand/60 blur-3xl -z-10 opacity-10 pointer-events-none" />
     </Reveal>
   );
 };

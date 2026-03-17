@@ -22,7 +22,7 @@ export const HeroStats = () => {
             className="w-full h-full object-cover"
           />
           {/* Overlay plus sombre pour meilleure lisibilité */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/30 to-transparent p-8 flex flex-col justify-end gap-2">
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent p-8 flex flex-col justify-end gap-2">
             <h3 className="text-h3 text-white text-start whitespace-pre-line">
               {t("hero.feature_title")}
             </h3>
