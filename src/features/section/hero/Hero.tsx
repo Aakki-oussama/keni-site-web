@@ -14,7 +14,6 @@ export const Hero = () => {
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col lg:flex-row items-stretch gap-8">
-
           {/* 1. HeroStats — 25% */}
           <div className={`${columnClass} lg:w-1/4 order-2 lg:order-1`}>
             <HeroStats />
@@ -29,7 +28,6 @@ export const Hero = () => {
           <div className={`${columnClass} lg:w-5/12 order-1 lg:order-3`}>
             <HeroContent />
           </div>
-
         </div>
       </div>
     </section>

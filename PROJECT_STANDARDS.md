@@ -32,3 +32,12 @@ This document defines the "Source of Truth" for development styles and patterns.
 - **No Unused Vars**: Never leave unused variables (like `_`).
 - **No Placeholders**: Use real logic or confirmed assets.
 - **Components over Files**: Keep components focused. If a piece of UI is used twice, move it to `src/components/shared`.
+
+## 6. Clip-path & Elastic Shape System
+- **Rule**: For complex curved containers (like Hero Gallery), use SVG `clip-path` with `objectBoundingBox` instead of CSS `mask-image`.
+- **Performance**: `clip-path` is vector-based and GPU-accelerated, ensuring zero blurriness and better mobile performance.
+- **Elastic Design**: 
+    - Use `objectBoundingBox` in the SVG definition to make the shape scale proportionally with the container.
+    - Synchronize "void spaces" (like where pagination sits) using CSS variables `--split-x` and `--split-y`.
+    - **Logic**: Use `calc()` in the child container (pagination) to match the empty space perfectly: `width: calc((1 - var(--split-x)) * 100%)`.
+- **Registry**: All shared shapes must be defined in `src/components/shared/ClipPaths.tsx` and injected globally in `App.tsx`.

@@ -58,7 +58,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   className={`relative block py-3 px-4 rounded-lg font-marcellus hover:bg-brand/5 transition-all text-lg group ${
                     isActive
                       ? "nav-link-active"
-                      : "text-zinc-900 hover:text-brand"
+                      : "text-black hover:text-brand"
                   }`}
                 >
                   <span className={isActive ? "font-bold" : ""}>

@@ -24,12 +24,12 @@ export const Navbar = () => {
         <nav className="glass-pill px-8 h-20 rounded-[40px] flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="shrink-0">
-            <img 
-              src="/logo.svg" 
-              alt="Kini Osteo Sahaty" 
-              className="h-10 w-auto" 
-              width={160} 
-              height={40} 
+            <img
+              src="/logo.svg"
+              alt="Kini Osteo Sahaty"
+              className="h-10 w-auto"
+              width={160}
+              height={40}
             />
           </a>
 
@@ -44,7 +44,7 @@ export const Navbar = () => {
               href="#contact"
               variant="pill"
               size="md"
-              icon={<Icons.ArrowRight size={14}/>}
+              icon={<Icons.ArrowRight size={14} />}
             >
               {t("navbar.cta")}
             </Button>

@@ -9,7 +9,11 @@ export const HeroStats = () => {
   return (
     <div className="flex flex-col gap-6 h-full w-full">
       {/* 1. Feature Card (Top) */}
-      <Reveal animation="animate-enter-left" delay="delay-300" className="w-full">
+      <Reveal
+        animation="animate-enter-left"
+        delay="delay-300"
+        className="w-full"
+      >
         <Card className="aspect-square group w-full">
           <img
             src="/images/hero-doctors.jpg"
@@ -34,14 +38,21 @@ export const HeroStats = () => {
               aria-hidden="true"
               className="absolute bottom-8 end-8 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md"
             >
-              <Icons.ArrowRight size={20} className="-rotate-135 rtl:-rotate-45 text-brand" />
+              <Icons.ArrowRight
+                size={20}
+                className="-rotate-135 rtl:-rotate-45 text-brand"
+              />
             </div>
           </div>
         </Card>
       </Reveal>
 
       {/* 2. Stats/Illustration Card (Bottom) */}
-      <Reveal animation="animate-enter-left" delay="delay-300" className="w-full">
+      <Reveal
+        animation="animate-enter-left"
+        delay="delay-300"
+        className="w-full"
+      >
         <Card className="relative bg-brand p-8 aspect-auto lg:aspect-[4/3] flex flex-col justify-between gap-8 lg:gap-0 group shadow-xl min-h-[160px] lg:min-h-0 w-full">
           <img
             src="/images/decoration-body-card.webp"

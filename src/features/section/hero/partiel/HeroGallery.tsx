@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "../../../../components/shared/Reveal";
 
-
 // 1. Liste des images pour le carousel (Sortie du composant pour performance)
 const HERO_IMAGES = [
   "/images/hero-slider-1.jpg",
@@ -21,34 +20,37 @@ export const HeroGallery = () => {
   }, []);
 
   return (
-    <Reveal 
-      animation="animate-enter-left" 
-      delay="delay-600" 
+    <Reveal
+      animation="animate-enter-left"
+      delay="delay-600"
       className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-full"
     >
       {/* 🟢 CONTENEUR PARENT : Synchronisation des dimensions du "Trou" */}
-      <div 
+      <div
         className="relative group w-full h-full"
-        style={{ 
+        style={{
           // ⚠️ --split-x = 0.66 and --split-y = 0.85 must match
           // the clip-path cut-out in ClipPaths.tsx
           // If you change the shape, update these values too
-          ['--split-x' as any]: '0.66', 
-          ['--split-y' as any]: '0.85',
-          transform: isRTL ? "scaleX(-1) translateZ(0)" : "translateZ(0)" 
+          ["--split-x" as any]: "0.66",
+          ["--split-y" as any]: "0.85",
+          transform: isRTL ? "scaleX(-1) translateZ(0)" : "translateZ(0)",
         }}
       >
         {/* Lueur décorative */}
         <div className="absolute -inset-4 bg-brand/60 blur-3xl -z-10 opacity-10 pointer-events-none" />
-        
+
         {/* LE CADRE DE L'IMAGE (Clipped) */}
         <div
-          className="absolute inset-0 shadow-2xl bg-slate-200 overflow-hidden"
+          className="absolute inset-0 shadow-2xl bg-black overflow-hidden"
           style={{
-            clipPath: 'url(#clip-gallery)',
-            WebkitClipPath: 'url(#clip-gallery)',
+            clipPath: "url(#clip-gallery)",
+            WebkitClipPath: "url(#clip-gallery)",
             WebkitBackfaceVisibility: "hidden",
             backfaceVisibility: "hidden",
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+            willChange: "transform",
           }}
         >
           {/* L'IMAGE : On annule le miroir du parent pour que l'image reste dans le bon sens */}
@@ -67,15 +69,15 @@ export const HeroGallery = () => {
           />
 
           {/* Dégradé sombre */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
         </div>
 
         {/* 🚀 LA PAGINATION AUTO-SYNCHRONISÉE */}
-        <div 
+        <div
           className="absolute bottom-0 right-0 flex items-center justify-center p-[2%]"
-          style={{ 
-            width: 'calc((1 - var(--split-x)) * 100%)', 
-            height: 'calc((1 - var(--split-y)) * 100%)',
+          style={{
+            width: "calc((1 - var(--split-x)) * 100%)",
+            height: "calc((1 - var(--split-y)) * 100%)",
           }}
         >
           <div className="flex items-center justify-center space-x-1 sm:space-x-2">

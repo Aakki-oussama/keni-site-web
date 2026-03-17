@@ -1,15 +1,15 @@
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
-  Twitter, 
-  Menu, 
-  X, 
-  ChevronRight, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Menu,
+  X,
+  ChevronRight,
   ArrowRight,
   Sparkles,
   Shield,
@@ -17,7 +17,7 @@ import {
   Component,
   Calendar,
   Globe,
-  type LucideIcon 
+  type LucideIcon,
 } from "lucide-react";
 
 /**
@@ -51,13 +51,13 @@ export const Icons = {
   Instagram,
   Linkedin,
   Twitter,
-  
+
   // Navigation
   Menu,
   X,
   ChevronRight,
   ArrowRight,
-  
+
   // Features/General
   Sparkles,
   Shield,
@@ -65,7 +65,7 @@ export const Icons = {
   Component,
   Calendar,
   Globe,
-  
+
   // Expose configuration for easy access
   SIZES: ICON_SIZES,
   CONFIG: ICON_CONFIG,

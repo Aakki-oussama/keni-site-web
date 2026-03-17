@@ -34,10 +34,10 @@ export function Reveal({
           observer.unobserve(element);
         }
       },
-      { 
-        threshold, 
-        rootMargin: "0px 0px -10% 0px" 
-      }
+      {
+        threshold,
+        rootMargin: "0px 0px -10% 0px",
+      },
     );
 
     observer.observe(element);

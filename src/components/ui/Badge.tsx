@@ -1,8 +1,8 @@
-import { cn } from "../../lib/utils"
+import { cn } from "../../lib/utils";
 
 interface BadgeProps {
-  label: string
-  className?: string
+  label: string;
+  className?: string;
 }
 
 export const Badge = ({ label, className }: BadgeProps) => {
@@ -18,5 +18,5 @@ export const Badge = ({ label, className }: BadgeProps) => {
         {label}
       </span>
     </div>
-  )
-}
+  );
+};
