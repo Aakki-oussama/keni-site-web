@@ -57,7 +57,7 @@ export const HeroGallery = () => {
           <img
             key={activeIndex}
             src={HERO_IMAGES[activeIndex]}
-            alt={`${t("images.gallery_doctor")} ${activeIndex + 1}`}
+            alt={`${t("hero.images.practice_preview")} ${activeIndex + 1}`}
             width={800}
             height={1000}
             sizes="(max-width: 768px) 100vw, 50vw"

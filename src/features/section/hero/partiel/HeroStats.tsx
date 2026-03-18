@@ -17,7 +17,7 @@ export const HeroStats = () => {
         <Card className="aspect-square group w-full">
           <img
             src="/images/hero-doctors.jpg"
-            alt={t("images.physio_work")}
+            alt={t("hero.images.physio_work")}
             width={400}
             height={400}
             loading="eager"
@@ -28,11 +28,11 @@ export const HeroStats = () => {
           {/* Overlay plus sombre pour meilleure lisibilité */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent p-8 flex flex-col justify-end gap-2">
             <h3 className="text-h3 text-white text-start whitespace-pre-line">
-              {t("hero.feature_title")}
+              {t("hero.intro_card.title")}
             </h3>
             {/* Texte plus visible */}
             <p className="text-body text-white max-w-[180px] sm:max-w-[420px] lg:max-w-[180px]">
-              {t("hero.feature_desc")}
+              {t("hero.intro_card.description")}
             </p>
             <div
               aria-hidden="true"
@@ -56,7 +56,8 @@ export const HeroStats = () => {
         <Card className="relative bg-brand p-8 aspect-auto lg:aspect-[4/3] flex flex-col justify-between gap-8 lg:gap-0 group shadow-xl min-h-[160px] lg:min-h-0 w-full">
           <img
             src="/images/decoration-body-card.webp"
-            alt={t("images.decoration.card")}
+            alt=""
+            aria-hidden="true"
             width={400}
             height={300}
             decoding="async"
@@ -67,7 +68,7 @@ export const HeroStats = () => {
           <div className="relative z-10">
             <span className="text-h2 text-white block">20+</span>
             <span className="text-white text-small uppercase tracking-wider">
-              {t("hero.years_expertise")}
+              {t("hero.stats_card.experience.label")}
             </span>
           </div>
 
@@ -75,7 +76,7 @@ export const HeroStats = () => {
           <div className="flex items-center relative z-10">
             <img
               src="/images/reviewers-new.webp"
-              alt={t("images.patients.satisfaits")}
+              alt={t("hero.images.patients")}
               className="h-8 w-auto"
               width="64"
               height="32"
@@ -89,7 +90,8 @@ export const HeroStats = () => {
           <div className="absolute end-0 bottom-0 w-[193px] h-[185px]">
             <img
               src="/images/decoration-card.png"
-              alt={t("images.decoration.card")}
+              alt=""
+              aria-hidden="true"
               width={193}
               height={185}
               decoding="async"

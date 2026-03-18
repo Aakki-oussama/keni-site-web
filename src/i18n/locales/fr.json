@@ -7,6 +7,7 @@
     "contact": "Contact",
     "cta": "Prendre RDV"
   },
+
   "topbar": {
     "location": "Casablanca, Maroc",
     "phone": "06 00 00 00 00",
@@ -17,23 +18,69 @@
       "twitter": "Suivez-nous sur Twitter"
     }
   },
+
   "hero": {
-    "trusted_care": "Soin de Confiance",
-    "title_part1": "Le Chemin",
-    "title_part2": "Vers une Vie",
-    "title_part3": "Sans Douleur",
+    "badge": "Soin de Confiance",
+
+    "title": {
+      "main": "Le Chemin",
+      "highlight": "Vers une Vie",
+      "end": "Sans Douleur"
+    },
+
     "description": "Nos thérapeutes qualifiés conçoivent des programmes de récupération personnalisés juste pour vous. Chaque plan se concentre sur le soulagement de votre douleur.",
-    "feature_desc": "La kinésithérapie aide à restaurer le mouvement et à améliorer la fonction physique.",
-    "years_expertise": "Années d'Expertise",
-    "feature_title": "Physio Help\nHere",
+
+    "cta": "Prendre un RDV",
+
+    "intro_card": {
+      "title": "Physio Help\nHere",
+      "description": "La kinésithérapie aide à restaurer le mouvement et à améliorer la fonction physique."
+    },
+
+    "stats_card": {
+      "experience": {
+        "value": "20+",
+        "label": "Années d'Expertise"
+      },
+      "clients": {
+        "value": "4.5k",
+        "label": "Patients satisfaits"
+      }
+    },
+
     "images": {
       "physio_work": "Kinésithérapeute au travail",
-      "images.decoration.card": "",
-      "images.decoration.body": "",
-      "images.patients.satisfaits": "Patients satisfaits"
+      "practice_preview": "Aperçu de nos séances de rééducation",
+      "patients": "Patients satisfaits"
     }
   },
-  "buttons": {
-    "openQuote": "Prendre un rendez-vous"
+
+  "about": {
+    "badge": "À propos de",
+
+    "title": {
+      "main": "Notre Engagement",
+      "highlight": "Pour des Soins Experts",
+      "end": "Et un Rétablissement Durable"
+    },
+
+    "description": "Nous sommes une équipe de kinésithérapeutes passionnés et expérimentés dédiés à votre bien-être. Avec des années d'expertise, nous offrons des soins personnalisés pour vous aider à retrouver mobilité et confort.",
+
+    "cta": "En Savoir Plus",
+
+    "tabs": {
+      "mission": {
+        "label": "Notre Mission",
+        "content": "Notre mission est de fournir des soins de kinésithérapie de haute qualité, personnalisés et basés sur des preuves pour aider nos patients à atteindre leur plein potentiel physique et à améliorer leur qualité de vie."
+      },
+      "vision": {
+        "label": "Notre Vision",
+        "content": "Notre vision est d'être le centre de kinésithérapie de référence dans la région, reconnu pour son excellence clinique, son approche centrée sur le patient et son engagement envers la communauté."
+      },
+      "values": {
+        "label": "Nos Valeurs",
+        "content": "Nos valeurs fondamentales incluent l'intégrité, l'empathie, l'excellence, le respect et le travail d'équipe. Ces valeurs guident chacune de nos actions et décisions."
+      }
+    }
   }
 }

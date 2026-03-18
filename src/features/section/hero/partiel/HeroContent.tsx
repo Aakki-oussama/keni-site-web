@@ -15,13 +15,13 @@ export const HeroContent = () => {
     >
       <div className="flex flex-col justify-center gap-6 h-full">
         {/* Trusted Badge */}
-        <Badge label={t("hero.trusted_care")} className="mb-0" />
+        <Badge label={t("hero.badge")} className="mb-0" />
 
         {/* Main Title */}
         <h1 id="hero-heading" className="text-h1 text-white">
-          {t("hero.title_part1")}{" "}
-          <span className="text-brand">{t("hero.title_part2")}</span>{" "}
-          {t("hero.title_part3")}
+          {t("hero.title.main")}{" "}
+          <span className="text-brand">{t("hero.title.highlight")}</span>{" "}
+          {t("hero.title.end")}
         </h1>
 
         {/* Description */}
