@@ -4,7 +4,7 @@ import { ClipPaths } from './components/shared/ClipPaths'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-zinc-900">
       <ClipPaths />
       <Navbar />
 

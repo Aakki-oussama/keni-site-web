@@ -54,9 +54,22 @@
   --font-marcellus: 'Marcellus', serif;
   --font-arabic: 'Noto Naskh Arabic', serif;
 
+  /* Palette Brand */
   --color-brand: #C1121F;        /* Rouge principal */
   --color-brand-dark: #960d17;   /* Rouge hover */
   --color-brand-foncer: #401f21; /* Rouge très sombre — fond Hero */
+  --color-black: #000000;        /* Noir for text in bg white */
+
+  /* Palette Grey/Zinc Premium */
+  --color-zinc-900: #18181b;     /* Texte principal — Titres */
+  --color-zinc-800: #27272a;     /* Texte secondaire — Paragraphes forts */
+  --color-zinc-700: #3f3f46;     /* Texte de corps — Lecture fluide */
+  --color-zinc-600: #52525b;     /* Texte subtil — Légendes */
+  --color-zinc-500: #71717a;     /* Icones et textes désactivés */
+  --color-zinc-400: #a1a1aa;     /* Bordures foncées ou placeholders */
+  --color-zinc-300: #d4d4d8;     /* Bordures claires — séparateurs */
+  --color-zinc-200: #e4e4e7;     /* Fond de bouton hover / Gris très doux */
+  --color-zinc-100: #f4f4f5;     /* Fonds de section / Cartes discrètes */
 }
 
 /* ═══════════════════════════════════════════

@@ -3,9 +3,14 @@ import { cn } from "../../lib/utils";
 interface BadgeProps {
   label: string;
   className?: string;
+  variant?: "light" | "dark";
 }
 
-export const Badge = ({ label, className }: BadgeProps) => {
+export const Badge = ({
+  label,
+  className,
+  variant = "light",
+}: BadgeProps) => {
   return (
     <div className={cn("inline-flex items-center gap-3 mb-4", className)}>
       {/* Line + Round — no gap between them */}
@@ -14,7 +19,12 @@ export const Badge = ({ label, className }: BadgeProps) => {
         <span className="w-3 h-3 rounded-full bg-brand" />
       </div>
       {/* Text */}
-      <span className="text-xs font-marcellus uppercase tracking-widest text-white">
+      <span
+        className={cn(
+          "text-xs font-marcellus uppercase tracking-widest",
+          variant === "light" ? "text-white" : "text-zinc-900"
+        )}
+      >
         {label}
       </span>
     </div>

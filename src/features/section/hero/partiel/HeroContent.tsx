@@ -15,7 +15,7 @@ export const HeroContent = () => {
     >
       <div className="flex flex-col justify-center gap-6 h-full">
         {/* Trusted Badge */}
-        <Badge label={t("hero.badge")} className="mb-0" />
+        <Badge label={t("hero.badge")} variant="light" className="mb-0" />
 
         {/* Main Title */}
         <h1 id="hero-heading" className="text-h1 text-white">

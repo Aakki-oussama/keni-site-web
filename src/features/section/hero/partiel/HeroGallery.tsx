@@ -42,7 +42,7 @@ export const HeroGallery = () => {
 
         {/* LE CADRE DE L'IMAGE (Clipped) */}
         <div
-          className="absolute inset-0 shadow-2xl bg-black overflow-hidden"
+          className="absolute inset-0 shadow-2xl bg-zinc-900 overflow-hidden"
           style={{
             clipPath: "url(#clip-gallery)",
             WebkitClipPath: "url(#clip-gallery)",
@@ -69,7 +69,7 @@ export const HeroGallery = () => {
           />
 
           {/* Dégradé sombre */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent pointer-events-none" />
         </div>
 
         {/* 🚀 LA PAGINATION AUTO-SYNCHRONISÉE */}
