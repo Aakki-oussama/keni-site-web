@@ -44,7 +44,7 @@ export const Navbar = () => {
               href="#contact"
               variant="pill"
               size="md"
-              icon={<Icons.ArrowRight size={14} />}
+              icon={<Icons.ArrowRight size={Icons.SIZES.sm} />}
             >
               {t("navbar.cta")}
             </Button>

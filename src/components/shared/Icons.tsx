@@ -29,11 +29,13 @@ import {
 export const ICON_SIZES = {
   xs: 12,
   sm: 14,
+  base: 16, // Nouveau : Taille standard interface
   md: 18,
-  lg: 24,
-  xl: 28,
-  xxl: 32,
-  huge: 48,
+  lg: 20, // Modifié : Taille Médium/Large
+  xl: 24, // Décalé
+  xxl: 28,
+  huge: 32,
+  giant: 48,
 };
 
 // 2. Global Styling - Change here to update weight

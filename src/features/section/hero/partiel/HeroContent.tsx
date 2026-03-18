@@ -33,7 +33,7 @@ export const HeroContent = () => {
             href="#contact"
             variant="pill"
             size="lg"
-            icon={<Icons.ArrowRight size={16} />}
+            icon={<Icons.ArrowRight size={Icons.SIZES.base} />}
           >
             {t("navbar.cta")}
           </Button>

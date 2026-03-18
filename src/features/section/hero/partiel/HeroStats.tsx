@@ -39,7 +39,7 @@ export const HeroStats = () => {
               className="absolute bottom-8 end-8 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md"
             >
               <Icons.ArrowRight
-                size={20}
+                size={Icons.SIZES.lg}
                 className="-rotate-135 rtl:-rotate-45 text-brand"
               />
             </div>
