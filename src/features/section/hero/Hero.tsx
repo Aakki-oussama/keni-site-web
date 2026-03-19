@@ -10,7 +10,7 @@ export const Hero = () => {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen pt-[var(--header-height)] pb-20 overflow-hidden flex items-center bg-brand-foncer bg-[url('/images/decoration-body.png')] bg-center bg-repeat bg-auto"
+      className="hero-section relative min-h-screen overflow-hidden flex items-center bg-brand-foncer bg-[url('/images/decoration-body.png')] bg-center bg-repeat bg-auto"
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col lg:flex-row items-stretch gap-8">

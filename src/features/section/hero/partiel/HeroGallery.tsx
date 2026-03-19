@@ -50,7 +50,6 @@ export const HeroGallery = () => {
             backfaceVisibility: "hidden",
             transform: "translateZ(0)",
             WebkitTransform: "translateZ(0)",
-            willChange: "transform",
           }}
         >
           {/* L'IMAGE : On annule le miroir du parent pour que l'image reste dans le bon sens */}
@@ -64,7 +63,7 @@ export const HeroGallery = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 animate-fade-in"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 can-hover:group-hover:scale-105 animate-fade-in"
             style={{ transform: isRTL ? "scaleX(-1)" : "none" }}
           />
 
@@ -92,7 +91,7 @@ export const HeroGallery = () => {
                   className={`rounded-full bg-white transition-all duration-300 ${
                     activeIndex === i
                       ? "w-2 h-2 sm:w-2.5 sm:h-2.5 opacity-100 ring-[6px] sm:ring-[8px] ring-white/10"
-                      : "w-1.5 h-1.5 sm:w-2 sm:h-2 opacity-40 group-hover:opacity-100 group-hover:ring-[3px] group-hover:ring-white/20"
+                      : "w-1.5 h-1.5 sm:w-2 sm:h-2 opacity-40 can-hover:group-hover:opacity-100 can-hover:group-hover:ring-[3px] can-hover:group-hover:ring-white/20"
                   }`}
                 />
               </button>

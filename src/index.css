@@ -5,13 +5,13 @@
    Modifiez ici pour changer tout le site
 ═══════════════════════════════════════════ */
 :root {
-  --header-height: 240px;
+  --header-height: 128px;
   --dir: 1;
 }
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 160px; /* Mobile = TopBar cachée */
+    --header-height: 88px; /* Mobile = TopBar cachée */
   }
 }
 
@@ -73,10 +73,12 @@
 }
 
 /* ═══════════════════════════════════════════
-   CUSTOM UTILITIES — Tailwind v4
-   Syntaxe: @utility nom-classe { ... }
-   Ces classes s'utilisent directement dans className=""
+   CUSTOM VARIANTS & UTILITIES — Tailwind v4
+   Syntaxe: @utility nom-classe { ... } | @variant nom { ... }
 ═══════════════════════════════════════════ */
+
+/* Filtre le Hover : actif seulement sur les appareils avec souris */
+@variant can-hover (@media (hover: hover));
 
 /* Arrivée depuis la GAUCHE (Auto-inversé en RTL) */
 @utility animate-enter-left {
@@ -118,6 +120,38 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+
+
+/* Section Padding — Mobile: 3.5rem (14) | Tablet: 4rem (16) | Desktop: 6rem (24) */
+@utility section-py {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+
+  @media (width >= 768px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@utility hero-section {
+  padding-bottom: 3.5rem;
+  padding-top: calc(var(--header-height) + 3.5rem);
+
+  @media (width >= 768px) {
+    padding-bottom: 4rem;
+    padding-top: calc(var(--header-height) + 4rem);
+  }
+
+  @media (width >= 1024px) {
+    padding-bottom: 6rem;
+    padding-top: calc(var(--header-height) + 6rem);
+  }
+}
 
 
 /* ─── Nav Link Active ─── */

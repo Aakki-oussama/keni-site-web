@@ -25,12 +25,13 @@ export const Button = (props: ButtonProps) => {
 
   const variants = {
     primary:
-      "bg-brand text-white hover:bg-brand-dark shadow-md shadow-brand/10",
-    secondary: "bg-zinc-900 text-white hover:bg-zinc-800",
-    outline: "border-2 border-brand text-brand hover:bg-brand hover:text-white",
-    ghost: "text-zinc-600 hover:text-brand hover:bg-brand/5",
-    light: "bg-brand/10 text-brand hover:bg-brand/20",
-    pill: "bg-brand text-white hover:bg-brand-dark",
+      "bg-brand text-white can-hover:hover:bg-brand-dark shadow-md shadow-brand/10",
+    secondary: "bg-zinc-900 text-white can-hover:hover:bg-zinc-800",
+    outline:
+      "border-2 border-brand text-brand can-hover:hover:bg-brand can-hover:hover:text-white",
+    ghost: "text-zinc-600 can-hover:hover:text-brand can-hover:hover:bg-brand/5",
+    light: "bg-brand/10 text-brand can-hover:hover:bg-brand/20",
+    pill: "bg-brand text-white can-hover:hover:bg-brand-dark",
   };
 
   const sizes = {
@@ -52,7 +53,7 @@ export const Button = (props: ButtonProps) => {
         {/* Texte — hover: légèrement transparent */}
         <span
           className={cn(
-            "ps-6 font-marcellus transition-opacity duration-300 group-hover:opacity-90",
+            "ps-6 font-marcellus transition-opacity duration-300 can-hover:group-hover:opacity-90",
             sizes[size],
           )}
         >
@@ -64,10 +65,10 @@ export const Button = (props: ButtonProps) => {
           <span
             className={cn(
               "w-10 h-10 rounded-full flex items-center justify-center shrink-0",
-              "bg-brand-foncer group-hover:bg-white",
+              "bg-brand-foncer can-hover:group-hover:bg-white",
               "transition-all duration-300",
-              "group-hover:scale-110",
-              "text-white group-hover:text-brand-foncer",
+              "can-hover:group-hover:scale-110",
+              "text-white can-hover:group-hover:text-brand-foncer",
             )}
           >
             {icon}

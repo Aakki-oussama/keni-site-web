@@ -35,7 +35,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         <div className="flex justify-end p-6">
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-brand transition-colors p-2"
+            className="text-brand transition-colors p-2"
             aria-label={t("navbar.close_menu", "Fermer le menu")}
           >
             <Icons.X
@@ -55,10 +55,10 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className={`relative block py-3 px-4 rounded-lg font-marcellus hover:bg-brand/5 transition-all text-lg group ${
+                  className={`relative block py-3 px-4 rounded-lg font-marcellus transition-all text-lg group ${
                     isActive
                       ? "nav-link-active"
-                      : "text-black hover:text-brand"
+                      : "text-black"
                   }`}
                 >
                   <span className={isActive ? "font-bold" : ""}>
