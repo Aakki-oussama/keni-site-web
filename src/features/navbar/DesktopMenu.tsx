@@ -9,7 +9,7 @@ export const DesktopMenu = () => {
   const activeId = useActiveSection(NAV_LINKS.map((link) => link.href));
 
   return (
-    <ul className="hidden md:flex items-center gap-1">
+    <ul className="hidden lg:flex items-center gap-1">
       {NAV_LINKS.map((link) => {
         const isActive = activeId === link.href.replace("#", "");
 

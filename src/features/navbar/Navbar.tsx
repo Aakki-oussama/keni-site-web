@@ -34,12 +34,12 @@ export const Navbar = () => {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <DesktopMenu />
           </div>
 
           {/* CTA Desktop */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button
               href="#contact"
               variant="pill"
@@ -53,7 +53,7 @@ export const Navbar = () => {
           {/* Mobile Button */}
           <button
             onClick={() => setIsOpen(true)}
-            className="md:hidden text-brand transition-colors p-2"
+            className="lg:hidden text-brand transition-colors p-2"
             aria-label={t("navbar.menu_label", "Ouvrir le menu")}
           >
             <Icons.Menu

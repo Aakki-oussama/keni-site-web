@@ -23,7 +23,7 @@ export const HeroGallery = () => {
     <Reveal
       animation="animate-enter-left"
       delay="delay-600"
-      className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-full"
+      className="relative w-full aspect-[4/5]"
     >
       {/* 🟢 CONTENEUR PARENT : Synchronisation des dimensions du "Trou" */}
       <div

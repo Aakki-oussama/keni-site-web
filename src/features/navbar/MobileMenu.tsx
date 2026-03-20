@@ -20,7 +20,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 z-50 md:hidden animate-fade-in"
+      className="fixed inset-0 bg-black/50 z-50 lg:hidden animate-fade-in"
       onClick={onClose}
       aria-hidden="true"
     >

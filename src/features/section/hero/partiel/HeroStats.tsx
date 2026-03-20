@@ -26,12 +26,12 @@ export const HeroStats = () => {
             className="w-full h-full object-cover"
           />
           {/* Overlay plus sombre pour meilleure lisibilité */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent p-8 flex flex-col justify-end gap-2">
-            <h3 className="text-h3 text-white text-start whitespace-pre-line">
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-8 flex flex-col justify-end gap-2">
+            <h3 className="text-h3 text-zinc-100 text-start whitespace-pre-line">
               {t("hero.intro_card.title")}
             </h3>
-            {/* Texte plus visible */}
-            <p className="text-body text-white max-w-[180px] sm:max-w-[420px] lg:max-w-[180px]">
+            {/* Texte auto-ajusté avec un padding pour ne pas toucher la flèche */}
+            <p className="text-body text-zinc-200 max-w-none pe-14">
               {t("hero.intro_card.description")}
             </p>
             <div

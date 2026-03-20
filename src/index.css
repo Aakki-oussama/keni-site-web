@@ -9,9 +9,9 @@
   --dir: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   :root {
-    --header-height: 88px; /* Mobile = TopBar cachée */
+    --header-height: 80px; /* Mobile = TopBar cachée */
   }
 }
 
@@ -59,6 +59,7 @@
   --color-brand-dark: #960d17;   /* Rouge hover */
   --color-brand-foncer: #401f21; /* Rouge très sombre — fond Hero */
   --color-black: #000000;        /* Noir for text in bg white */
+  --color-brand-section: #311819;   /* Jaune très sombre — fond Hero */
 
   /* Palette Grey/Zinc Premium */
   --color-zinc-900: #18181b;     /* Texte principal — Titres */
@@ -120,6 +121,34 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+
+
+/* ═══════════════════════════════════════════
+   CONTENEUR GLOBAL DU SITE
+   Permet d'avoir le même alignement partout !
+═══════════════════════════════════════════ */
+@utility container-site {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+
+  /* Mobile — 0 to 767px */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  /* Tablet — 768px to 1023px */
+  @media (width >= 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Desktop — 1024px+ */
+  @media (width >= 1024px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 
 
 /* Section Padding — Mobile: 3.5rem (14) | Tablet: 4rem (16) | Desktop: 6rem (24) */
@@ -249,7 +278,7 @@
 
 /* H1 — Hero Title | Mobile: 32px | Desktop: 53px */
 .text-h1 {
-  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-family: var(--font-marcellus);
   line-height: 1.1;
 }
@@ -320,6 +349,36 @@
 body {
   font-family: var(--font-sans);
   background-color: #050505;
+}
+
+/* ═══════════════════════════════════════════
+   BACKGROUND DECORATION (CSS Pur)
+═══════════════════════════════════════════ */  
+.bg-body {
+  position: relative;
+  isolation: isolate;
+}
+
+.bg-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-brand-foncer);
+  background-image: url('/images/decoration-body.png');
+  background-position: center top;
+  background-repeat: repeat;
+  background-size: auto;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/*  pour inverser (Miroir) le motif */
+.bg-body-flip-x::before {
+  transform: scaleX(-1);
+}
+
+.bg-body-flip-y::before {
+  transform: scaleY(-1);
 }
 
 /* Police arabe automatique en RTL */

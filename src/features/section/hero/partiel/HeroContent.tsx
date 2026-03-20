@@ -25,7 +25,7 @@ export const HeroContent = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-white text-body">{t("hero.description")}</p>
+        <p className="text-zinc-200 text-body">{t("hero.description")}</p>
 
         {/* CTA Button */}
         <div className="mt-4">
