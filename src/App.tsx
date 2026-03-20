@@ -1,6 +1,6 @@
 import { Navbar } from './features/navbar/Navbar'
 import { Hero } from './features/section/hero/Hero'
-import { AboutUs } from './features/section/about/AboutUs'
+// import { AboutUs } from './features/section/about/AboutUs'//
 import { ClipPaths } from './components/shared/ClipPaths'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       {/* Content starts here */}
       <main>
         <Hero />
-        <AboutUs />
+       {/* {<AboutUs />}// */}
       </main>
     </div>
   )

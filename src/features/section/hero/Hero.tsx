@@ -12,7 +12,7 @@ export const Hero = () => {
     >
       <div className="container-site relative z-10">
         {/* GRILLE RESPONSIVE : 1 Col (Mobile) -> 2 Cols (Tablette) -> 12 Cols (PC) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* 1. HeroStats (Ordre PC: 1 | Ordre Mobile/Tab: 2) */}
           <div className="flex w-full md:col-span-1 lg:col-span-3 order-2 lg:order-1">
