@@ -53,7 +53,7 @@ export const HeroStats = () => {
           delay="delay-300"
           className="w-full"
         >
-          <Card className="relative bg-brand p-6 aspect-auto flex flex-col justify-between group gap-12 shadow-xl">
+          <Card className="relative bg-brand p-6 aspect-[3/2] flex flex-col justify-between group shadow-xl">
             <img
               src="/images/decoration-body-card.webp"
               alt=""
